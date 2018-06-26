@@ -1,8 +1,8 @@
 body {
-    background-color: orangered;
+    background: url("/crystal-collector/assets/images/dark-grey-terrazzo.png")
 }
 body {
-    background-image: url("background.jpg");
+    background-image: url("/crystal-collector/assets/images/dark-grey-terrazzo.png");
     background-position: center 0%;
     background-repeat: no-repeat;
 }
