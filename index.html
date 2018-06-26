@@ -1,0 +1,70 @@
+<html>
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title>Crystal-Collector</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        </head>
+        <body>
+
+            <div id='goal' style="font-size: 80px"></div>
+            <div id='current-points' style="font-size: 80px"></div>
+            <script type="text/javascript">
+            let red = 'redGem.jpg';
+            let blue = 'blueGem.jpg';
+            let green = 'greenGem.jpg';
+            let yellow = 'purpleGem.jpg';
+            let colors = [red, yellow, blue, green];
+            let randomArray = [];
+            let currentPoints = 0;
+            let points = 0;
+            let goal = random = Math.floor(Math.random() * 20 + 80);
+            $('#goal').text("GOAL IS: " + goal);
+            $('#current-points').text("Current Points: " + currentPoints);
+            $(document).ready(function ()  { 
+                for (let i = 0; i < 4; i++) {
+                    let newDiv = $('<div></div>');
+                    newDiv.addClass('crystal');
+                    random = Math.floor(Math.random() * 12);
+                   while (randomArray.includes(random)) {
+                       random = Math.floor(Math.random() * 12);
+                       console.log(random);
+                       console.log('array ' + randomArray);
+                   };
+                   randomArray.push(random);
+                    newDiv.val(random);
+                   // newDiv.text(random);
+                    
+                    newDiv.css('height', '100px');
+                    newDiv.css('background-size', '100px 100px');
+                    newDiv.css('background-image', 'url(' + colors[i] + ')');
+                    newDiv.css('background-repeat', 'no-repeat');
+                    newDiv.click(function(){
+                        points += parseInt($(this).val());
+                        //currentPoints = $(this).val() + currentPoints;
+                        
+                        //console.log("Type of : " +  typeof(currentPoints));
+                        console.log('currentPoints ' + points);
+                        $('#current-points').text("Current Points: " + points);
+                        if (points === goal) {
+                            alert('WINNER');
+                            points = 0;
+                        }
+                        else if (points > goal){
+                            alert('LOSER');
+                            points = 0;
+                        }
+                    })
+                    $('body').append(newDiv);
+                   console.log('for loop number ' + i);
+                };
+                   
+                 
+                   
+               
+           });
+           </script>
+        </body>
+        </html>
